@@ -14,12 +14,12 @@ jobs:
       - name: Setup deno
         uses: denolib/setup-deno@v2
         with:
-          deno-version: v1.6.1
+          deno-version: v1.7.0
 
       - name: Build gh-pages
         run: |
           deno --version
-          deno install --unstable --allow-read --allow-write --allow-net --allow-run --name=pagic https://deno.land/x/pagic@v1.1.0/mod.ts
+          deno install --unstable --allow-read --allow-write --allow-net --allow-run --name=pagic https://deno.land/x/pagic@v1.5.1/mod.ts
           pagic build
 
       - name: Deploy gh-pages
