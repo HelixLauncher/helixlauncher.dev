@@ -1,42 +1,36 @@
 <!DOCTYPE html>
+
 <html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.bunny.net">
+		<link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,700&display=swap">
+		<link rel="stylesheet" href="/assets/base.css">
+		<title>Helix Launcher - {{ title }}</title>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="/helixlauncher.dev/assets/base.css">
-    <title>Helix Launcher - {{ title }}</title>
-</head>
+	<body>
+		<header>
+			<h1 class="navbar-title">Helix Launcher</h1>
 
-<body>
-    <header>
-        <h1 class="navbar-title">Helix Launcher</h1>
+			{%- for entry in search.pages("menu.visible=true", "menu.order") %}
+				<a class="navbar-links" href="/{{ entry.data.url }}" {% if entry.data.url==url %} aria-current="page" {% endif %}>
+					{{ entry.data.menu.title or entry.data.title }}
+				</a>
+			{%- endfor %}
+		</header>
+		<hr>
 
-        {%- for entry in search.pages("menu.visible=true", "menu.order") %}
-        <a class="navbar-links" href="/helixlauncher.dev{{ entry.data.url }}" {% if entry.data.url==url %} aria-current="page" {% endif %}>
-            {{ entry.data.menu.title or entry.data.title }}
-        </a>
-        {%- endfor %}
+		<main>
+			<h1>{{ title }}</h1>
 
-        <hr>
-    </header>
+			{{ content | safe }}
+		</main>
 
-    <div class="content">
-        <h1>{{ title }}</h1>
-
-        {{ content | safe }}
-    </div>
-
-    <footer>
-        <hr>
-
-        <p>Helix Launcher is managed and maintained by <a href="https://github.com/HelixLauncher">HelixLauncher</a></p>
-    </footer>
-</body>
-
+		<hr>
+		<footer>
+			<p>Helix Launcher is managed and maintained by <a href="https://github.com/HelixLauncher">HelixLauncher</a></p>
+		</footer>
+	</body>
 </html>
