@@ -17,6 +17,6 @@ site.use(minifyHTML({
 	}
 }));
 
-site.copy("static", ".");
+// site.copy("static", ".");
 
 export default site;
